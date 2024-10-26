@@ -126,6 +126,10 @@ export type MultilineElementTransformer = {
      * Whether the match is from an import operation (e.g. through `$convertFromMarkdownString`) or not (e.g. through typing in the editor).
      */
     isImport: boolean,
+    /**
+     * Decide whether to re-include the end match back to the to-be-processed elements list
+     */
+    skipReplacingEndMatch: {skipReplacingEndMatch: boolean}
   ) => boolean | void;
   type: 'multiline-element';
 };

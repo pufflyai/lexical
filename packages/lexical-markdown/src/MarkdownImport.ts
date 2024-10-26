@@ -191,10 +191,13 @@ function $importMultiline(
         }
       }
 
+      let skipReplacingEndMatch = {skipReplacingEndMatch: false};
       if (
-        replace(rootNode, null, startMatch, endMatch, linesInBetween, true) !==
+        replace(rootNode, null, startMatch, endMatch, linesInBetween, true, skipReplacingEndMatch) !==
         false
       ) {
+        if (skipReplacingEndMatch.skipReplacingEndMatch && (endLineIndex > 0)) endLineIndex--;
+
         // Return here. This $importMultiline function is run line by line and should only process a single multiline element at a time.
         return [true, endLineIndex];
       }
